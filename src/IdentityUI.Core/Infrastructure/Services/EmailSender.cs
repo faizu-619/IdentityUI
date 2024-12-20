@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Text;
 
-#if NET_CORE3
+#if NET_CORE3 || NET_CORE8
 using Microsoft.Extensions.Hosting;
 #endif
 

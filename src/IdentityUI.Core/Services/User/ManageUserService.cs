@@ -121,7 +121,7 @@ namespace SSRD.IdentityUI.Core.Services.User
 #if NET_CORE2
             string normalizeEmail = _userManager.NormalizeKey(editUserRequest.Email);
 #endif
-#if NET_CORE3
+#if NET_CORE3 || NET_CORE8
             string normalizeEmail = _userManager.NormalizeEmail(editUserRequest.Email);
 #endif
             if (normalizeEmail != appUser.NormalizedEmail)

@@ -550,7 +550,7 @@ namespace SSRD.IdentityUI.Core
         public static IdentityUIAppBuilder UseIdentityUI(this IApplicationBuilder app, bool enableMigrations = false)
         {
             app.UseAuthentication();
-#if NET_CORE3
+#if !NET_CORE2
             app.UseAuthorization();
 #endif
 

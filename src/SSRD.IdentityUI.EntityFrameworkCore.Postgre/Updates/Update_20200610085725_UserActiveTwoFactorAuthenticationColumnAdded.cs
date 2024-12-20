@@ -14,12 +14,14 @@ namespace SSRD.IdentityUI.EntityFrameworkCore.Postgre.Updates
 
         public override void AfterSchemaChange(IdentityDbContext context)
         {
+#if NETSTANDARD2_0_OR_GREATER 
             RawSqlString updateScript = $@"
                 UPDATE ""Users""
                 SET ""TwoFactor""={(int)TwoFactorAuthenticationType.Authenticator}
                 WHERE ""TwoFactorEnabled""=true";
 
             context.Database.ExecuteSqlCommand(updateScript);
+#endif
         }
     }
 }

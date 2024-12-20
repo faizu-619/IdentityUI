@@ -34,7 +34,7 @@ namespace SSRD.IdentityUI.Core.Services.Identity
             _logger = logger;
         }
 #endif
-#if NET_CORE3
+#if NET_CORE3 || NET_CORE8
         public CustomSecurityStampValidator(
             IOptions<SecurityStampValidatorOptions> options,
             SignInManager<AppUserEntity> signInManager,

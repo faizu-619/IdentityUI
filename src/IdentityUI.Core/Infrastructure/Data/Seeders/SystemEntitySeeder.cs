@@ -209,7 +209,7 @@ namespace SSRD.IdentityUI.Core.Infrastructure.Data.Seeders
         {
             List<RoleEntity> roles = _context.Roles
                 .Include(x => x.CanAssigne)
-                .ThenInclude(x => x.Role)
+                //.ThenInclude(x => x.Role)
                 .ToList();
 
             List<RoleAssignmentEntity> roleAssignmentEntities = new List<RoleAssignmentEntity>();

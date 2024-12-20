@@ -49,9 +49,9 @@ namespace IdentityUI.Dev
 
                     endpoints.ShowAuditToUser = false;
                 })
-                .UsePostgre()
+                //.UsePostgre()
                 //.UseSqlServer()
-                //.UseInMemoryDatabase()
+                .UseInMemoryDatabase()
                 .AddIdentityUI(options =>
                 {
                     options.Password.RequireDigit = false;

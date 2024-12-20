@@ -23,8 +23,7 @@ namespace SSRD.IdentityUI.Core.Infrastructure.Data.ReleaseManagment
 
 #if NET_CORE2
         private readonly IHostingEnvironment _hostingEnvironment;
-#endif
-#if NET_CORE3
+#else
         private readonly IWebHostEnvironment _hostingEnvironment;
 #endif
         private readonly IUpdateList _updateList;
@@ -33,7 +32,7 @@ namespace SSRD.IdentityUI.Core.Infrastructure.Data.ReleaseManagment
 #if NET_CORE2
         public ReleaseManagement(IdentityDbContext context, IHostingEnvironment hostingEnvironment, IUpdateList updateList,
             ILogger<ReleaseManagement> logger)
-#elif NET_CORE3
+#else
         public ReleaseManagement(IdentityDbContext context, IWebHostEnvironment hostingEnvironment, IUpdateList updateList,
             ILogger<ReleaseManagement> logger)
 #endif

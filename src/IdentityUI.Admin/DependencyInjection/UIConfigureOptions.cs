@@ -22,7 +22,7 @@ namespace SSRD.IdentityUI.Admin.DependencyInjection
         }
 #endif
 
-#if NET_CORE3
+#if NET_CORE3 || NET_CORE8
         private readonly IWebHostEnvironment _environment;
 
         public UIConfigureOptions(IWebHostEnvironment environment)

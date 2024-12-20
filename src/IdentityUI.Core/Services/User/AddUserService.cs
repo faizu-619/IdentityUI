@@ -334,16 +334,16 @@ namespace SSRD.IdentityUI.Core.Services.User
 
             if (_identityUIEndpoints.UseEmailAsUsername)
             {
-                validationResult = _baseRegisterValidator.Validate(baseRegisterRequest, ruleSet: BaseRegisterRequestValidator.USE_EMAIL_AS_USERNAME);
+                validationResult = _baseRegisterValidator.Validate(baseRegisterRequest, option => option.IncludeRuleSets(BaseRegisterRequestValidator.USE_EMAIL_AS_USERNAME));
             }
             else
             {
-                validationResult = _baseRegisterValidator.Validate(baseRegisterRequest, ruleSet: BaseRegisterRequestValidator.REQUIRE_EMAIL_USERNAME);
+                validationResult = _baseRegisterValidator.Validate(baseRegisterRequest, option => option.IncludeRuleSets(BaseRegisterRequestValidator.REQUIRE_EMAIL_USERNAME));
             }
 
             if(setPassword)
             {
-                ValidationResult setPasswordValidationResult = _baseRegisterValidator.Validate(baseRegisterRequest, ruleSet: BaseRegisterRequestValidator.REQUIRE_PASSWORD);
+                ValidationResult setPasswordValidationResult = _baseRegisterValidator.Validate(baseRegisterRequest, option => option.IncludeRuleSets(BaseRegisterRequestValidator.REQUIRE_PASSWORD));
                 if(!setPasswordValidationResult.IsValid)
                 {
                     foreach(ValidationFailure setPasswordError in setPasswordValidationResult.Errors)

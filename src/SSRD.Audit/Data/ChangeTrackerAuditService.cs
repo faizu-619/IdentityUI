@@ -10,6 +10,10 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+#if NET_CORE8
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+#endif
 
 namespace SSRD.Audit.Data
 {
@@ -178,10 +182,23 @@ namespace SSRD.Audit.Data
 
             foreach (NavigationEntry navigation in entityEntry.Navigations)
             {
+#if NET_CORE2
                 if (navigation.Metadata.ForeignKey.PrincipalEntityType.ClrType == entityEntry.Entity.GetType() 
                     && navigation.Metadata.ForeignKey.DeleteBehavior == Microsoft.EntityFrameworkCore.DeleteBehavior.Cascade)
+#endif
+
+#if NET_CORE8
+                var navigationMetadata = ((INavigation)navigation.Metadata);
+
+                // Use GetForeignKey() from the metadata
+                var foreignKey = navigationMetadata.ForeignKey;
+
+                if (foreignKey != null &&
+                    foreignKey.PrincipalEntityType.ClrType == entityEntry.Entity.GetType() &&
+                    foreignKey.DeleteBehavior == DeleteBehavior.Cascade)
+#endif
                 {
-                    if(navigation.Metadata.PropertyInfo.GetCustomAttributes(typeof(AuditIgnoreCascadeAttribute)).Any())
+                    if (navigation.Metadata.PropertyInfo.GetCustomAttributes(typeof(AuditIgnoreCascadeAttribute)).Any())
                     {
                         continue;
                     }
