@@ -9,6 +9,7 @@ using SSRD.IdentityUI.Account;
 using SSRD.IdentityUI.Admin;
 using SSRD.IdentityUI.Admin.Areas.GroupAdmin;
 using SSRD.IdentityUI.Core;
+using SSRD.IdentityUI.EntityFrameworkCore.MySql.DependencyInjection;
 using SSRD.IdentityUI.EntityFrameworkCore.Postgre.DependencyInjection;
 using SSRD.IdentityUI.EntityFrameworkCore.SqlServer.DependencyInjection;
 using System;
@@ -51,7 +52,8 @@ namespace IdentityUI.Dev
                 })
                 //.UsePostgre()
                 //.UseSqlServer()
-                .UseInMemoryDatabase()
+                //.UseInMemoryDatabase()
+                .UseMySql()
                 .AddIdentityUI(options =>
                 {
                     options.Password.RequireDigit = false;

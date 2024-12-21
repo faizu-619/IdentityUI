@@ -564,7 +564,7 @@ namespace SSRD.IdentityUI.Core.Services.User
 #if NET_CORE2
             appUser.NormalizedEmail = _userManager.NormalizeKey(appUser.Email);
             appUser.NormalizedEmail = _userManager.NormalizeKey(appUser.UserName);
-#elif NET_CORE3
+#else
             appUser.NormalizedEmail = _userManager.NormalizeEmail(appUser.Email);
             appUser.NormalizedUserName = _userManager.NormalizeName(appUser.UserName);
 #endif

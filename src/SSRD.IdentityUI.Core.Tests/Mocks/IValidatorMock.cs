@@ -33,7 +33,7 @@ namespace SSRD.IdentityUI.Core.Tests.Mocks
             Setup(x => x.Validate(It.IsAny<TModel>()))
                 .Returns(new ValidationResult(new List<ValidationFailure>()));
 
-            Setup(x => x.Validate(It.IsAny<ValidationContext>()))
+            Setup(x => x.Validate(It.IsAny<IValidationContext>()))
                 .Returns(new ValidationResult(new List<ValidationFailure>()));
 
             return this;

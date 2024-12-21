@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\IdentityUI.Account\SSRD.IdentityUI.Account.csproj" />
     <ProjectReference Include="..\IdentityUI.Admin\SSRD.IdentityUI.Admin.csproj" />
+    <ProjectReference Include="..\SSRD.IdentityUI.EntityFrameworkCore.MySql\SSRD.IdentityUI.EntityFrameworkCore.MySql.csproj" />
     <ProjectReference Include="..\SSRD.IdentityUI.EntityFrameworkCore.Postgre\SSRD.IdentityUI.EntityFrameworkCore.Postgre.csproj" />
     <ProjectReference Include="..\SSRD.IdentityUI.EntityFrameworkCore.SqlServer\SSRD.IdentityUI.EntityFrameworkCore.SqlServer.csproj" />
   </ItemGroup>

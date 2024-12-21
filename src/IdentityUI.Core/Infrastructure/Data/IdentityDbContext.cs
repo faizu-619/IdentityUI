@@ -161,7 +161,7 @@ namespace SSRD.IdentityUI.Core.Infrastructure.Data
 
 #if NET_CORE2
                         dbTransaction.Commit();
-#elif NET_CORE3
+#else
                         await dbTransaction.CommitAsync(cancellationToken);
 #endif
                         return changes;
@@ -172,7 +172,7 @@ namespace SSRD.IdentityUI.Core.Infrastructure.Data
 
 #if NET_CORE2
                         dbTransaction.Rollback();
-#elif NET_CORE3
+#else
                         await dbTransaction.RollbackAsync(cancellationToken);
 #endif
 
